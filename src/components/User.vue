@@ -1,7 +1,7 @@
 <template>
   <li :class="styleA.user">
     <span>{{user.name}}</span> --- <span>{{user.age}}</span>
-    <slot name="len" :len="nameLength"/>
+    <slot name="length" :len="nameLength"/>
   </li>
 </template>
 

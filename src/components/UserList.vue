@@ -5,7 +5,7 @@
     </slot>
     <ul :class="$style['user-list']">
       <user v-for="(user, index) in users" :user="user" :key="index" v-bind="$attrs">
-        <show-length slot="len" slot-scope="props" :len="props.len"/>
+        <show-length slot="length" slot-scope="{ len }" :len="len"/>
       </user>
     </ul>
     <slot name="footer">
