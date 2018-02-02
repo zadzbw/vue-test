@@ -1,5 +1,9 @@
 <template>
   <div class="home">
+    <p :class="$style.test">
+      <button @click="showLoading">show</button>
+      <button @click="closeLoading">close</button>
+    </p>
     <user-list :users="users" text="test" aaa="123">
       <h2 slot="footer">slot footer</h2>
     </user-list>
@@ -8,6 +12,9 @@
 
 <script>
   import UserList from '../components/UserList';
+  import Loading from '../components/Loading';
+
+  const loading = new Loading();
 
   export default {
     name: 'home',
@@ -25,11 +32,27 @@
     },
     mounted() {
     },
+    methods: {
+      showLoading() {
+        loading.show('test');
+      },
+      closeLoading() {
+        loading.close();
+      },
+    },
   };
 </script>
 
 <style lang="scss">
   .home {
     font-size: 20px;
+  }
+</style>
+
+<style lang="scss" module>
+  .test {
+    text-align: left;
+    position: relative;
+    z-index: 10000;
   }
 </style>

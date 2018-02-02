@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div :class="$style['user-list-wrapper']">
     <slot name="header">
       <h2>default header</h2>
     </slot>
@@ -26,22 +26,22 @@
       ShowLength,
     },
     mounted() {
-      console.log(this.$attrs);
-      console.log(this.$slots);
+      // console.log(this.$attrs);
+      // console.log(this.$slots);
     },
   };
 </script>
 
 <style lang="scss" module>
+  .user-list-wrapper {
+    display: block;
+  }
+
   .user-list {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     padding: 0;
-  }
-
-  .user {
-    display: block;
   }
 </style>

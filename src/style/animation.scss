@@ -1,0 +1,35 @@
+.fade-enter-active {
+  animation: fadeIn .2s ease-out;
+}
+
+.fade-leave-active {
+  animation: fadeIn .2s ease-in reverse;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.move-up-enter-active {
+  animation: moveUpIn .2s ease-out;
+}
+
+.move-up-leave-active {
+  animation: moveUpIn .2s ease-in reverse;
+}
+
+@keyframes moveUpIn {
+  0% {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0%);
+    opacity: 1;
+  }
+}
