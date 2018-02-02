@@ -5,6 +5,7 @@ import LoadingVue from './Loading';
 const defaultOptions = {
   visible: false,
   target: null,
+  body: false,
 };
 
 const LoadingConstructor = Vue.extend(LoadingVue);
@@ -17,12 +18,14 @@ export default class Loading {
     }
     this.options = Object.assign({}, defaultOptions, options);
     const { target } = this.options;
+    // target is String or HTMLElement
     if (_.isString(target)) {
       this.options = document.querySelector(target);
     }
     if (!this.options.target) {
       this.options.target = document.body;
     }
+    this.options.body = this.options.target === document.body;
     this.instance = new LoadingConstructor({
       data: this.options,
     }).$mount();

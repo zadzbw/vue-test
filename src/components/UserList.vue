@@ -1,7 +1,7 @@
 <template>
   <div :class="$style['user-list-wrapper']">
     <slot name="header">
-      <h2>default header</h2>
+      <div>default header</div>
     </slot>
     <ul :class="$style['user-list']">
       <user v-for="(user, index) in users" :user="user" :key="index" v-bind="$attrs">
@@ -9,7 +9,7 @@
       </user>
     </ul>
     <slot name="footer">
-      <h2>default footer</h2>
+      <div>default footer</div>
     </slot>
   </div>
 </template>
@@ -35,6 +35,7 @@
 <style lang="scss" module>
   .user-list-wrapper {
     display: block;
+    margin: 16px 0;
   }
 
   .user-list {

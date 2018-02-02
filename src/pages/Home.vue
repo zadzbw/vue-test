@@ -1,12 +1,17 @@
 <template>
   <div class="home">
     <div :class="$style.test">
-      <button @click="showLoading1">show1</button>
-      <button @click="showLoading2">show2</button>
+      <button @click="showLoading">show body</button>
+      <button @click="showLoading1">show list1</button>
+      <button @click="showLoading2">show list2</button>
       <button @click="closeLoading">close</button>
     </div>
-    <user-list ref="list" :users="users" text="test" aaa="123">
-      <h2 slot="footer">slot footer</h2>
+    <user-list ref="list1" :users="users" text="test1" aaa="123">
+      <div style="font-size: 24px; font-weight: 700;" slot="header">list 1</div>
+      <div slot="footer">slot footer</div>
+    </user-list>
+    <user-list ref="list2" :users="users" text="test2" bbb="123">
+      <div style="font-size: 24px; font-weight: 700;" slot="header">list 2</div>
     </user-list>
   </div>
 </template>
@@ -34,12 +39,17 @@
     mounted() {
     },
     methods: {
-      showLoading1() {
+      showLoading() {
         loading.show('test');
+      },
+      showLoading1() {
+        loading.show('指定target', {
+          target: this.$refs.list1.$el,
+        });
       },
       showLoading2() {
         loading.show('指定target', {
-          target: this.$refs.list.$el,
+          target: this.$refs.list2.$el,
         });
       },
       closeLoading() {
