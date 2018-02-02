@@ -3,7 +3,7 @@
     <div class="loading-wrapper" :class="{ 'loading-on-body': body }" v-if="visible">
       <div class="loading-body">
         <div class="loader"></div>
-        <div class="loading-content">{{text}}</div>
+        <div v-if="text" class="loading-content">{{text}}</div>
       </div>
     </div>
   </transition>

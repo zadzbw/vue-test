@@ -6,6 +6,7 @@ const defaultOptions = {
   visible: false,
   target: null,
   body: false,
+  lock: true, // 是否锁定target的滚动
 };
 
 const LoadingConstructor = Vue.extend(LoadingVue);
@@ -30,8 +31,14 @@ export default class Loading {
       data: this.options,
     }).$mount();
     const root = this.options.target;
-    root.classList.add('loading-no-scroll');
-    root.classList.add('loading-fit-position');
+    const { position } = window.getComputedStyle(root);
+    // 如果position已经是absolute||fixed,则无需添加该类
+    if (!(position === 'absolute' || position === 'fixed')) {
+      root.classList.add('loading-fit-position');
+    }
+    if (this.options.lock) {
+      root.classList.add('loading-no-scroll');
+    }
     root.appendChild(this.instance.$el);
     this.instance.setText(text);
     Vue.nextTick(() => {
