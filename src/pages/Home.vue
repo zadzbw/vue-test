@@ -4,7 +4,10 @@
       <button @click="showLoading">show body</button>
       <button @click="showLoading1">show list1</button>
       <button @click="showLoading2">show list2</button>
-      <button @click="closeLoading">close</button>
+      <br>
+      <button @click="closeLoading">close body</button>
+      <button @click="closeLoading1">close list1</button>
+      <button @click="closeLoading2">close list2</button>
     </div>
     <user-list ref="list1" :users="users" text="test1" aaa="123">
       <div style="font-size: 24px; font-weight: 700;" slot="header">list 1</div>
@@ -40,20 +43,32 @@
     },
     methods: {
       showLoading() {
-        loading.show('test');
+        this.loading = loading.show('test');
       },
       showLoading1() {
-        loading.show('指定target', {
+        this.loading1 = loading.show('指定list1', {
           target: this.$refs.list1.$el,
         });
       },
       showLoading2() {
-        loading.show('指定target', {
+        this.loading2 = loading.show('指定list2', {
           target: this.$refs.list2.$el,
         });
       },
       closeLoading() {
-        loading.close();
+        if (this.loading) {
+          this.loading.close();
+        }
+      },
+      closeLoading1() {
+        if (this.loading1) {
+          this.loading1.close();
+        }
+      },
+      closeLoading2() {
+        if (this.loading2) {
+          this.loading2.close();
+        }
       },
     },
   };
