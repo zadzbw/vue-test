@@ -28,6 +28,7 @@ export default class Loading {
     }).$mount();
     const root = this.options.target;
     root.classList.add('loading-no-scroll');
+    root.classList.add('loading-fit-position');
     root.appendChild(this.instance.$el);
     this.instance.setText(text);
     Vue.nextTick(() => {
@@ -39,12 +40,15 @@ export default class Loading {
   close() {
     const root = this.options.target;
     Vue.nextTick(() => {
-      root.classList.remove('loading-no-scroll');
       if (this.instance) {
         this.instance.closeLoading();
-        Vue.nextTick(() => {
+        this.instance.$on('after-leave', () => {
+          root.classList.remove('loading-no-scroll');
+          root.classList.remove('loading-fit-position');
           this.instance.$destroy();
           this.instance = null;
+        });
+        Vue.nextTick(() => {
         });
       }
     });

@@ -1,10 +1,11 @@
 <template>
   <div class="home">
-    <p :class="$style.test">
-      <button @click="showLoading">show</button>
+    <div :class="$style.test">
+      <button @click="showLoading1">show1</button>
+      <button @click="showLoading2">show2</button>
       <button @click="closeLoading">close</button>
-    </p>
-    <user-list :users="users" text="test" aaa="123">
+    </div>
+    <user-list ref="list" :users="users" text="test" aaa="123">
       <h2 slot="footer">slot footer</h2>
     </user-list>
   </div>
@@ -33,8 +34,13 @@
     mounted() {
     },
     methods: {
-      showLoading() {
+      showLoading1() {
         loading.show('test');
+      },
+      showLoading2() {
+        loading.show('指定target', {
+          target: this.$refs.list.$el,
+        });
       },
       closeLoading() {
         loading.close();

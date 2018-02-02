@@ -1,5 +1,5 @@
 <template>
-  <transition name="fade">
+  <transition name="fade" @after-leave="handleAfterLeave">
     <div class="loading-wrapper" v-if="visible">
       <div class="loading-body">
         <div class="loader"></div>
@@ -28,6 +28,9 @@
       setText(text) {
         this.text = text;
       },
+      handleAfterLeave() {
+        this.$emit('after-leave');
+      },
     },
     destroyed() {
       if (this.$el && this.$el.parentNode) {
@@ -41,7 +44,7 @@
   @import "Loading";
 
   .loading-wrapper {
-    position: fixed;
+    position: absolute;
     top: 0;
     right: 0;
     left: 0;
