@@ -53,6 +53,7 @@
       showLoading2() {
         this.loading2 = loading.show('指定list2', {
           target: this.$refs.list2.$el,
+          maskColor: 'rgba(200, 0, 0, 0.5)',
         });
       },
       closeLoading() {

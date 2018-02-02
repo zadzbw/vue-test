@@ -1,6 +1,11 @@
 <template>
   <transition name="fade" @after-leave="handleAfterLeave">
-    <div class="loading-wrapper" :class="{ 'loading-on-body': body }" v-if="visible">
+    <div
+      v-if="visible"
+      class="loading-wrapper"
+      :class="{ 'loading-on-body': body }"
+      :style="{ backgroundColor: maskColor }"
+    >
       <div class="loading-body">
         <div class="loader"></div>
         <div v-if="text" class="loading-content">{{text}}</div>
@@ -17,6 +22,7 @@
         visible: false,
         text: null,
         body: false, // target是否为document.body
+        maskColor: null,
       };
     },
     methods: {

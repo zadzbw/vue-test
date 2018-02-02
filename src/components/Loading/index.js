@@ -7,6 +7,7 @@ const defaultOptions = {
   target: null,
   body: false,
   lock: true, // 是否锁定target的滚动
+  maskColor: null, // 蒙层背景色
 };
 let loadingArray = [];
 
