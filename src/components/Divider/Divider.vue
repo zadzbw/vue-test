@@ -1,6 +1,6 @@
 <template>
-  <div class="divider">
-    <span v-if="hasContent" class="divider-text">
+  <div :class="dividerClass">
+    <span v-if="hasContent" class="divider-content">
       <slot name="content"/>
     </span>
   </div>
@@ -8,8 +8,17 @@
 
 <script>
   export default {
+    props: {
+      dashed: Boolean,
+    },
     name: 'divider',
     computed: {
+      dividerClass() {
+        return {
+          divider: true,
+          'divider-dashed': this.dashed,
+        };
+      },
       hasContent() {
         return !!this.$slots.content;
       },
@@ -27,7 +36,6 @@
     color: #9b9b9b;
     margin: 25px 0;
     width: 100%;
-    user-select: none;
 
     &:before, &:after {
       content: '';
@@ -39,7 +47,13 @@
       transform: scaleY(.5) translateY(50%);
     }
 
-    &-text {
+    &-dashed {
+      &:before, &:after {
+        border-top-style: dashed;
+      }
+    }
+
+    &-content {
       display: inline-block;
       padding: 0 20px;
     }

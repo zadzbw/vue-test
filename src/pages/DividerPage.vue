@@ -10,6 +10,10 @@
     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
     <divider dashed/>
     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+    <divider dashed>
+      <template slot="content">dashed and with text</template>
+    </divider>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
   </div>
 </template>
 
