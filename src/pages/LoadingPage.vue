@@ -1,5 +1,6 @@
 <template>
   <div :class="$style['loading-page']">
+    <h2>This is loading page</h2>
     <div :class="$style['loading-test']">
       <button @click="showLoading">show body</button>
       <button @click="showLoading1">show list1</button>

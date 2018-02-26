@@ -8,8 +8,8 @@
       <router-link tag="li" to="/loading">
         <a>Loading</a>
       </router-link>
-      <router-link tag="li" to="/about">
-        <a>About</a>
+      <router-link tag="li" to="/divider">
+        <a>Divider</a>
       </router-link>
     </nav>
     <router-view class="views"/>
@@ -60,5 +60,6 @@
 
   .views {
     flex: 1;
+    padding: 0 24px;
   }
 </style>

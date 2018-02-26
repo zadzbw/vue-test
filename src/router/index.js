@@ -1,9 +1,10 @@
 import Vue from 'vue';
 import Router from 'vue-router';
-import Home from '../pages/Home';
+import HomePage from '../pages/HomePage';
 import LoadingPage from '../pages/LoadingPage';
 
-const About = () => import(/* webpackChunkName: "about" */'../pages/About');
+// async
+const DividerPage = () => import(/* webpackChunkName: "divider" */'../pages/DividerPage');
 
 Vue.use(Router);
 
@@ -13,7 +14,7 @@ export default new Router({
     {
       path: '/',
       name: 'home',
-      component: Home,
+      component: HomePage,
     },
     {
       path: '/loading',
@@ -21,9 +22,9 @@ export default new Router({
       component: LoadingPage,
     },
     {
-      path: '/about',
-      name: 'about',
-      component: About,
+      path: '/divider',
+      name: 'divider',
+      component: DividerPage,
     },
   ],
 });
