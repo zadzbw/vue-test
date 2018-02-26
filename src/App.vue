@@ -1,12 +1,18 @@
 <template>
   <div id="app">
-    <img src="./assets/logo.png" style="width: 150px;">
     <nav class="nav">
-      <router-link to="/">Home</router-link>
-      <router-link to="/loading">Loading</router-link>
-      <router-link to="/about">About</router-link>
+      <img src="./assets/logo.png" style="width: 150px;">
+      <router-link exact tag="li" to="/">
+        <a>Home</a>
+      </router-link>
+      <router-link tag="li" to="/loading">
+        <a>Loading</a>
+      </router-link>
+      <router-link tag="li" to="/about">
+        <a>About</a>
+      </router-link>
     </nav>
-    <router-view/>
+    <router-view class="views"/>
   </div>
 </template>
 
@@ -16,7 +22,7 @@
   };
 </script>
 
-<style>
+<style lang="scss">
   #app {
     font-family: -apple-system, SF UI Text, Arial, Hiragino Sans GB, Microsoft YaHei, sans-serif;
     -webkit-font-smoothing: antialiased;
@@ -25,9 +31,34 @@
     color: #2c3e50;
     margin-top: 16px;
     padding: 24px;
+    display: flex;
   }
 
   .nav {
-    margin: 8px 0;
+    flex: 0 0 240px;
+
+    > li {
+      display: block;
+      padding: 8px 0;
+
+      > a {
+        color: #34495e;
+        text-decoration: none;
+
+        &:hover {
+          border-bottom: 2px solid #42b983;
+        }
+      }
+
+      &.router-link-active {
+        > a {
+          color: #42b983;
+        }
+      }
+    }
+  }
+
+  .views {
+    flex: 1;
   }
 </style>
