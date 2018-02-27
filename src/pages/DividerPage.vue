@@ -25,8 +25,10 @@
       <span>Text1</span>
       <divider type="vertical"/>
       <span>Text2</span>
-      <divider type="vertical"/>
+      <divider type="vertical" dashed/>
       <span>Text3</span>
+      <divider type="vertical"/>
+      <span>Text4</span>
     </div>
   </div>
 </template>

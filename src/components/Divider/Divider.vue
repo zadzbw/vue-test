@@ -18,6 +18,12 @@
     },
     name: 'divider',
     computed: {
+      isHorizontal() {
+        return this.type === 'horizontal';
+      },
+      hasContent() {
+        return !!this.$slots.content && this.isHorizontal;
+      },
       dividerClass() {
         return {
           divider: true,
@@ -26,15 +32,14 @@
           'divider-dashed': this.dashed,
         };
       },
-      hasContent() {
-        return !!this.$slots.content && this.type === 'horizontal';
-      },
     },
   };
 </script>
 
 <style lang="scss">
-  .divider {
+  $divider: divider;
+
+  .#{$divider} {
     font-size: 14px;
     padding: 0;
     line-height: 1.5;
@@ -47,8 +52,12 @@
       vertical-align: middle;
       top: -0.1em;
       margin: 0 3px;
-      background-color: #b2b2b2;
+      border-right: 1px solid #b2b2b2;
       transform: scaleX(0.5);
+
+      &.#{$divider}-dashed {
+        border-style: none dashed none none;
+      }
     }
 
     &-horizontal {
@@ -56,6 +65,12 @@
       width: 100%;
       height: 1px;
       margin: 25px 0;
+
+      &.#{$divider}-dashed {
+        &:before, &:after {
+          border-style: dashed none none;
+        }
+      }
 
       &:after {
         content: '';
@@ -84,12 +99,6 @@
         border-top: 1px solid #b2b2b2;
         transform: scaleY(.5) translateY(50%);
         transform-origin: initial;
-      }
-    }
-
-    &-dashed {
-      &:before, &:after {
-        border-style: dashed none none;
       }
     }
 
