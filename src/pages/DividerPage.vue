@@ -4,6 +4,8 @@
     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
     <divider/>
     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+    <divider divider-color="red"/>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
     <divider dashed/>
     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
     <divider>
@@ -14,21 +16,23 @@
       <template slot="content">with colored text</template>
     </divider>
     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-    <divider dashed>
+    <divider dashed divider-color="blue" content-color="#42b983">
       <template slot="content">dashed and with text</template>
     </divider>
     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
     <h4>
       垂直divider
     </h4>
-    <div class="test">
+    <div class="vertical-test">
       <span>Text1</span>
       <divider type="vertical"/>
       <span>Text2</span>
-      <divider type="vertical" dashed/>
+      <divider type="vertical" divider-color="red"/>
       <span>Text3</span>
-      <divider type="vertical"/>
+      <divider type="vertical" dashed/>
       <span>Text4</span>
+      <divider type="vertical" dashed divider-color="red"/>
+      <span>Text5</span>
     </div>
   </div>
 </template>
@@ -50,7 +54,7 @@
     /*font-size: 20px;*/
   }
 
-  .test {
+  .vertical-test {
     font-size: 14px;
   }
 </style>

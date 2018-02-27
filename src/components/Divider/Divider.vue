@@ -1,5 +1,5 @@
 <template>
-  <div :class="dividerClass">
+  <div :style=dividerStyle :class="dividerClass">
     <span v-if="hasContent" class="divider-content" :style="{ color: contentColor }">
       <slot name="content"/>
     </span>
@@ -15,6 +15,7 @@
         default: 'horizontal',
       },
       contentColor: String,
+      dividerColor: String,
     },
     name: 'divider',
     computed: {
@@ -22,13 +23,23 @@
         return this.type === 'horizontal';
       },
       hasContent() {
-        return !!this.$slots.content && this.isHorizontal;
+        return !!this.$slots.content;
+      },
+      dividerStyle() {
+        if (this.isHorizontal) {
+          return {
+            borderTopColor: this.dividerColor,
+          };
+        }
+        return {
+          borderRightColor: this.dividerColor,
+        };
       },
       dividerClass() {
         return {
           divider: true,
           [`divider-${this.type}`]: true,
-          'divider-has-content': this.hasContent,
+          'divider-has-content': this.hasContent && this.isHorizontal,
           'divider-dashed': this.dashed,
         };
       },
@@ -38,6 +49,7 @@
 
 <style lang="scss">
   $divider: divider;
+  $divider-color: #b2b2b2;
 
   .#{$divider} {
     font-size: 14px;
@@ -52,7 +64,7 @@
       vertical-align: middle;
       top: -0.1em;
       margin: 0 3px;
-      border-right: 1px solid #b2b2b2;
+      border-right: 1px solid $divider-color;
       transform: scaleX(0.5);
 
       &.#{$divider}-dashed {
@@ -65,6 +77,8 @@
       width: 100%;
       height: 1px;
       margin: 25px 0;
+      border: none;
+      border-top-color: $divider-color;
 
       &.#{$divider}-dashed {
         &:before, &:after {
@@ -78,7 +92,8 @@
         top: 0;
         left: 0;
         width: 100%;
-        border-top: 1px solid #b2b2b2;
+        border-top: 1px solid;
+        border-top-color: inherit;
         transform: scaleY(0.5);
         transform-origin: 0 0;
       }
@@ -96,7 +111,8 @@
         top: 50%;
         left: 0;
         width: 50%;
-        border-top: 1px solid #b2b2b2;
+        border-top: 1px solid;
+        border-top-color: inherit;
         transform: scaleY(.5) translateY(50%);
         transform-origin: initial;
       }
