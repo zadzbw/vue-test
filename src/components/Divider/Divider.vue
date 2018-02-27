@@ -52,7 +52,6 @@
   $divider-color: #b2b2b2;
 
   .#{$divider} {
-    font-size: 14px;
     padding: 0;
     line-height: 1.5;
 
@@ -121,6 +120,10 @@
     &-content {
       display: inline-block;
       padding: 0 20px;
+      font-size: 16px;
+      font-weight: bold;
+      text-align: center;
+      white-space: nowrap;
     }
   }
 </style>
