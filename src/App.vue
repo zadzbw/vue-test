@@ -11,6 +11,9 @@
       <router-link tag="li" to="/divider">
         <a>Divider</a>
       </router-link>
+      <router-link tag="li" to="/todo-list">
+        <a>TodoList</a>
+      </router-link>
     </nav>
     <router-view class="views"/>
   </div>

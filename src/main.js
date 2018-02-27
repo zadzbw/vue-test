@@ -6,6 +6,7 @@ import router from './router';
 import './style/main.scss';
 
 Vue.config.productionTip = false;
+window.Vue = Vue;
 
 /* eslint-disable no-new */
 new Vue({

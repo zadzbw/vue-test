@@ -2,6 +2,7 @@ import Vue from 'vue';
 import Router from 'vue-router';
 import HomePage from '../pages/HomePage';
 import LoadingPage from '../pages/LoadingPage';
+import TodoListPage from '../pages/TodoListPage';
 
 // async
 const DividerPage = () => import(/* webpackChunkName: "divider" */'../pages/DividerPage');
@@ -25,6 +26,11 @@ export default new Router({
       path: '/divider',
       name: 'divider',
       component: DividerPage,
+    },
+    {
+      path: '/todo-list',
+      name: 'todo-list',
+      component: TodoListPage,
     },
   ],
 });
