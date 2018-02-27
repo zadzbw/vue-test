@@ -75,7 +75,7 @@
       position: relative;
       width: 100%;
       height: 1px;
-      margin: 25px 0;
+      margin: 24px 0;
       border: none;
       border-top-color: $divider-color;
 
@@ -102,6 +102,7 @@
       display: table;
       white-space: nowrap;
       text-align: center;
+      margin: 12px 0;
 
       &:before, &:after {
         content: '';
