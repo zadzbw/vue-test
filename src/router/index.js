@@ -6,6 +6,7 @@ import HomePage from '../pages/HomePage';
 const DividerPage = () => import(/* webpackChunkName: "divider" */'../pages/DividerPage');
 const LoadingPage = () => import(/* webpackChunkName: "loading" */'../pages/LoadingPage');
 const TodoListPage = () => import(/* webpackChunkName: "todoList" */'../pages/TodoListPage');
+const TransitionPage = () => import(/* webpackChunkName: "transition" */'../pages/TransitionPage');
 
 Vue.use(Router);
 
@@ -31,6 +32,11 @@ export default new Router({
       path: '/todo-list',
       name: 'todo-list',
       component: TodoListPage,
+    },
+    {
+      path: '/transition',
+      name: 'transition',
+      component: TransitionPage,
     },
   ],
 });

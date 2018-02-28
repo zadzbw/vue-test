@@ -14,6 +14,9 @@
       <router-link tag="li" to="/todo-list">
         <a>TodoList</a>
       </router-link>
+      <router-link tag="li" to="/transition">
+        <a>Transition</a>
+      </router-link>
     </nav>
     <router-view class="views"/>
   </div>
@@ -66,5 +69,6 @@
   .views {
     flex: 1;
     padding: 0 24px;
+    position: relative;
   }
 </style>
