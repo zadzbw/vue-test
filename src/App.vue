@@ -26,6 +26,8 @@
 </script>
 
 <style lang="scss">
+  @import "./style/variables";
+
   #app {
     font-family: -apple-system, SF UI Text, Arial, Hiragino Sans GB, Microsoft YaHei, sans-serif;
     -webkit-font-smoothing: antialiased;
@@ -49,13 +51,13 @@
         text-decoration: none;
 
         &:hover {
-          border-bottom: 2px solid #42b983;
+          border-bottom: 2px solid $vue-green;
         }
       }
 
       &.router-link-active {
         > a {
-          color: #42b983;
+          color: $vue-green;
         }
       }
     }

@@ -1,11 +1,11 @@
 import Vue from 'vue';
 import Router from 'vue-router';
 import HomePage from '../pages/HomePage';
-import LoadingPage from '../pages/LoadingPage';
-import TodoListPage from '../pages/TodoListPage';
 
 // async
 const DividerPage = () => import(/* webpackChunkName: "divider" */'../pages/DividerPage');
+const LoadingPage = () => import(/* webpackChunkName: "loading" */'../pages/LoadingPage');
+const TodoListPage = () => import(/* webpackChunkName: "todoList" */'../pages/TodoListPage');
 
 Vue.use(Router);
 

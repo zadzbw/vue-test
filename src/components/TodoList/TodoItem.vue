@@ -37,9 +37,11 @@
 </style>
 
 <style lang="scss" module>
+  @import "../../style/variables";
+
   .test {
     font-weight: bold;
     font-size: 16px;
-    color: #42b983;
+    color: $vue-green;
   }
 </style>

@@ -21,14 +21,13 @@
 </template>
 
 <script>
-  import UserList from '../components/UserList';
   import Loading from '../components/Loading';
 
   const loading = new Loading();
 
   export default {
     components: {
-      UserList,
+      UserList: () => import('../components/UserList'), // async component
     },
     data() {
       return {
