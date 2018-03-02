@@ -14,6 +14,29 @@
       </p>
     </div>
     <div>
+      <h3>动态过渡</h3>
+      <button v-if="stop" @click="startScroll">
+        Start
+      </button>
+      <button v-else @click="stopScroll">
+        Stop
+      </button>
+      <button @click="scrollPrev">prev</button>
+      <button @click="scrollNext">next</button>
+      <br>
+      <p style="text-align: left;position: relative;height: 20px;">
+        <transition
+          :enter-active-class="enterActiveClass"
+          :leave-active-class="leaveActiveClass"
+          @after-enter="afterEnter"
+        >
+          <button v-for="(item, i) in items" v-if="i === index" :key="item" :class="$style.btn">
+            {{ item }}
+          </button>
+        </transition>
+      </p>
+    </div>
+    <div>
       <h3>列表进入、离开、排序过渡</h3>
       <button @click="add">Add</button>
       <button @click="remove">Remove</button>
@@ -43,6 +66,7 @@
 </template>
 
 <script>
+  import classNames from 'classnames';
   import shuffle from '../utils/shuffle';
   import TransitionComponent from '../components/TransitionComponent';
 
@@ -62,9 +86,33 @@
             num: (index % 9) + 1,
           };
         }),
+        index: 0,
+        stop: true,
+        direction: 'left',
       };
     },
     methods: {
+      afterEnter() {
+        if (!this.stop) {
+          this.scrollNext();
+        }
+      },
+      startScroll() {
+        this.stop = false;
+        this.scrollNext();
+      },
+      stopScroll() {
+        this.stop = true;
+      },
+      scrollNext() {
+        this.direction = 'left';
+        this.index = (this.index + 1) % this.items.length;
+      },
+      scrollPrev() {
+        this.direction = 'right';
+        const len = this.items.length;
+        this.index = ((this.index + len) - 1) % len;
+      },
       randomIndex() {
         return Math.floor(Math.random() * this.items.length);
       },
@@ -79,6 +127,20 @@
       },
       shuffleCells() {
         this.cells = shuffle(this.cells);
+      },
+    },
+    computed: {
+      enterActiveClass() {
+        return classNames('animated', {
+          fadeInRight: this.direction === 'left',
+          fadeInLeft: this.direction === 'right',
+        });
+      },
+      leaveActiveClass() {
+        return classNames('animated', {
+          fadeOutLeft: this.direction === 'left',
+          fadeOutRight: this.direction === 'right',
+        });
       },
     },
   };
