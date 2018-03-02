@@ -1,14 +1,6 @@
 <template>
   <div :class="$style['home-page']">
-    <p>vue</p>
-    <div
-      v-for="(value, index) in arr"
-      :key="index"
-      class="demo"
-    >
-      {{ index }} : {{ value }}
-    </div>
-    <button @click="shuffle">shuffle</button>
+    <h2>home page</h2>
     <br>
     <test-component v-model="foo" :bar.sync="bar"/>
   </div>
@@ -16,7 +8,6 @@
 
 <script>
   // import TestComponent from '../components/TestComponent';
-  import shuffle from '../utils/shuffle';
 
   export default {
     components: {
@@ -24,19 +15,14 @@
     },
     data() {
       return {
-        arr: ['A', 2, 3, 4, 5, 6, 7, 8, 9, 10, 'J', 'Q', 'K'],
-        foo: '',
-        bar: '',
+        foo: 'foo',
+        bar: 'bar',
       };
     },
     mounted() {
       window.home = this;
     },
-    methods: {
-      shuffle() {
-        this.arr = shuffle(this.arr);
-      },
-    },
+    methods: {},
   };
 </script>
 
