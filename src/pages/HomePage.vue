@@ -1,8 +1,9 @@
 <template>
   <div :class="$style['home-page']">
     <h2>home page</h2>
+    <button @click="toggle">toggle</button>
     <br>
-    <test-component v-model="foo" :bar.sync="bar"/>
+    <test-component v-if="show" v-model="foo" :bar.sync="bar"/>
   </div>
 </template>
 
@@ -15,6 +16,7 @@
     },
     data() {
       return {
+        show: false,
         foo: 'foo',
         bar: 'bar',
       };
@@ -22,7 +24,11 @@
     mounted() {
       window.home = this;
     },
-    methods: {},
+    methods: {
+      toggle() {
+        this.show = !this.show;
+      },
+    },
   };
 </script>
 
@@ -31,11 +37,5 @@
     &-page {
       font-size: 20px;
     }
-  }
-</style>
-
-<style>
-  .demo {
-    line-height: 1.5;
   }
 </style>
