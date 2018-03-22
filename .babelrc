@@ -18,6 +18,7 @@
   "plugins": [
     "lodash",
     "transform-vue-jsx",
+    "transform-decorators-legacy",
     "transform-runtime"
   ]
 }
