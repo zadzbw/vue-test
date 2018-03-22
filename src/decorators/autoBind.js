@@ -44,7 +44,10 @@ function autoBindMethod(target, key, { value: fn, configurable, enumerable }) {
 function autoBindClass(target) {
   // 装饰Class时，target是Class本身
   const descriptors = Object.getOwnPropertyDescriptors(target.prototype);
-  const keys = Object.getOwnPropertyNames(descriptors);
+  const keys = [
+    ...Object.getOwnPropertyNames(descriptors),
+    ...Object.getOwnPropertySymbols(descriptors),
+  ];
 
   keys.forEach((key) => {
     const descriptor = descriptors[key];
