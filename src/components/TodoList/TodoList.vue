@@ -9,7 +9,13 @@
       />
     </label>
     <button @click="shuffleTodo">shuffle</button>
-    <ul class="todo-list">
+    <transition-group
+      class="todo-list"
+      tag="ul"
+      :move-class="$style.move"
+      :enter-active-class="enterActiveClass"
+      :leave-active-class="leaveActiveClass"
+    >
       <todo-item
         v-for="(item, index) in items"
         :key="item.id"
@@ -17,17 +23,20 @@
         @delete1="deleteTodo"
         @delete2="items.splice(index, 1)"
       />
-    </ul>
+    </transition-group>
   </div>
 </template>
 
 <script>
+  import classNames from 'classnames';
   import TodoItem from './TodoItem';
   import shuffle from '../../utils/shuffle';
 
   export default {
     name: 'todo-list',
-    components: { TodoItem },
+    components: {
+      TodoItem,
+    },
     data() {
       return {
         newTodoText: '',
@@ -39,6 +48,19 @@
           },
         ],
       };
+    },
+    computed: {
+      enterActiveClass() {
+        return classNames('animated', {
+          fadeInRight: true,
+        });
+      },
+      leaveActiveClass() {
+        return classNames('animated', {
+          fadeOutLeft: true,
+          [`${this.$style.leave}`]: true,
+        });
+      },
     },
     methods: {
       addNewTodo() {
@@ -63,6 +85,17 @@
 
 <style lang="scss">
   .todo-list {
+    width: 500px;
     text-align: left;
+  }
+</style>
+
+<style lang="scss" module>
+  .move {
+    transition: all 0.5s ease-out;
+  }
+
+  .leave {
+    position: absolute;
   }
 </style>
