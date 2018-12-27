@@ -20,52 +20,21 @@
       <router-link tag="li" to="/vuex">
         <a>Vuex</a>
       </router-link>
+      <router-link tag="li" to="/canvas">
+        <a>Canvas</a>
+      </router-link>
     </nav>
     <div class="main">
-      <transition
-        :enter-active-class="enterActiveClass"
-        :leave-active-class="leaveActiveClass"
-      >
-        <keep-alive>
-          <router-view class="views"/>
-        </keep-alive>
-      </transition>
+      <router-view class="views"/>
     </div>
   </div>
 </template>
 
 <script>
-  import classNames from 'classnames';
-
   export default {
     name: 'App',
     data() {
-      return {
-        transitionName: 'slide-from-right',
-      };
-    },
-    watch: {
-      $route(to, from) {
-        const toDepth = to.path.split('/').length;
-        const fromDepth = from.path.split('/').length;
-        this.transitionName = toDepth < fromDepth ?
-          'slide-from-left' :
-          'slide-from-right';
-      },
-    },
-    computed: {
-      enterActiveClass() {
-        return classNames('animated', {
-          fadeInLeft: this.transitionName === 'slide-from-left',
-          fadeInRight: this.transitionName === 'slide-from-right',
-        });
-      },
-      leaveActiveClass() {
-        return classNames('animated', {
-          fadeOutRight: this.transitionName === 'slide-from-left',
-          fadeOutLeft: this.transitionName === 'slide-from-right',
-        });
-      },
+      return {};
     },
   };
 </script>

@@ -11,6 +11,7 @@ const VuexPage = () => import(/* webpackChunkName: "vuex" */'../pages/VuexPage/V
 const VuexRootPage = () => import(/* webpackChunkName: "vuex-root" */'../pages/VuexPage/VuexRootPage');
 const TodoPage = () => import(/* webpackChunkName: "vuex-TodoL" */'../pages/VuexPage/TodoPage');
 const CountPage = () => import(/* webpackChunkName: "vuex-count" */'../pages/VuexPage/CountPage');
+const CanvasPage = () => import(/* webpackChunkName: "canvas-page" */'../pages/CanvasPage');
 
 Vue.use(Router);
 
@@ -63,6 +64,10 @@ const router = new Router({
           component: TodoPage,
         },
       ],
+    },
+    {
+      path: '/canvas',
+      component: CanvasPage,
     },
   ],
 });
