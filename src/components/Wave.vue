@@ -6,40 +6,25 @@
 
 <script>
   /* eslint-disable no-mixed-operators,no-param-reassign */
+  import canvasMixin from '../mixins/canvasMixin';
+
   export default {
+    mixins: [canvasMixin],
     data() {
       return {
         phase: 0, // 相位
-        width: 0,
-        height: 0,
-        isUnmount: false,
       };
     },
     mounted() {
-      const canvas = this.$refs.canvas;
-      this.width = canvas.width / 4;
-      this.height = canvas.height / 4;
-      this.ctx = canvas.getContext('2d');
-      this.ctx.scale(4, 4);
       this.run((_ctx) => {
         this.draw(_ctx);
       });
     },
-    beforeDestroy() {
-      this.isUnmount = true;
-    },
-    computed: {
-      yPosition() {
-        return this.height / 2;
-      },
-      canvasStyle() {
-        return {
-          width: `${this.width}px`,
-          height: `${this.height}px`,
-        };
-      },
-    },
     methods: {
+      drawTitle(ctx) {
+        ctx.font = '24px Arial';
+        ctx.fillText('正弦波与周期为2 * width 的正弦波相乘', 24, 24);
+      },
       // 画坐标轴
       drawAxis(ctx) {
         ctx.beginPath();
@@ -73,6 +58,7 @@
       draw(ctx) {
         ctx.clearRect(0, 0, this.width, this.height);
         this.phase += 15;
+        this.drawTitle(ctx);
         this.drawAxis(ctx);
         const waves = [
           {
@@ -92,14 +78,6 @@
           },
         ];
         waves.forEach(wave => this.drawWave(ctx, wave));
-      },
-      run(callback) {
-        if (!this.isUnmount) {
-          window.requestAnimationFrame(() => {
-            this.run(callback);
-          });
-        }
-        callback(this.ctx);
       },
     },
   };
