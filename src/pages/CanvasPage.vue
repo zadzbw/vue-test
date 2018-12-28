@@ -1,6 +1,6 @@
 <template>
   <div :class="$style['wrapper']">
-    <!--<wave/>-->
+    <wave/>
     <square-wave/>
   </div>
 </template>

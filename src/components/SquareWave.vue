@@ -1,12 +1,17 @@
 <template>
   <div>
     <p>
-      奇次谐波数量: {{num}}<input type="range" min="1" max="50" v-model.number="num">
+      奇次谐波数量: {{num}}<input type="range" min="1" max="100" v-model.number="num">
     </p>
     <p>
       波形速度: {{speed}}<input type="range" min="0" max="20" v-model.number="speed">
     </p>
-    <canvas :style="canvasStyle" width="2560" height="1440" ref="canvas"></canvas>
+    <canvas
+      :style="canvasStyle"
+      :width="canvasWidth * scale"
+      :height="canvasHeight * scale"
+      ref="canvas"
+    ></canvas>
   </div>
 </template>
 
@@ -26,7 +31,7 @@
         phase: 0, // 相位
         speed: 10,
         num: 5, // 叠加波的个数
-        max: 10, // 开启动画时，波的最大个数
+        max: 50, // 开启动画时，波的最大个数
       };
     },
     mounted() {

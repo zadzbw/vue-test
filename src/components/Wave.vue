@@ -1,5 +1,10 @@
 <template>
-  <canvas :style="canvasStyle" width="2560" height="1440" ref="canvas"></canvas>
+  <canvas
+    :style="canvasStyle"
+    :width="canvasWidth * scale"
+    :height="canvasHeight * scale"
+    ref="canvas"
+  ></canvas>
 </template>
 
 <script>
@@ -58,6 +63,7 @@
       draw(ctx) {
         ctx.clearRect(0, 0, this.width, this.height);
         this.phase += this.speed;
+        ctx.lineWidth = 2;
         this.drawTitle(ctx);
         this.drawAxis(ctx);
         const waves = [

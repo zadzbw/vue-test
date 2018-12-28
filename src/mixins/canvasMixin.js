@@ -1,6 +1,9 @@
 export default {
   data() {
     return {
+      scale: 2,
+      canvasWidth: 640,
+      canvasHeight: 360,
       width: 0,
       height: 0,
       isUnmount: false,
@@ -8,10 +11,10 @@ export default {
   },
   mounted() {
     const canvas = this.$refs.canvas;
-    this.width = canvas.width / 4;
-    this.height = canvas.height / 4;
+    this.width = canvas.width / this.scale;
+    this.height = canvas.height / this.scale;
     this.ctx = canvas.getContext('2d');
-    this.ctx.scale(4, 4);
+    this.ctx.scale(this.scale, this.scale);
   },
   beforeDestroy() {
     this.isUnmount = true;
