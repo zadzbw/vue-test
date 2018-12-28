@@ -27,14 +27,4 @@ export default {
       };
     },
   },
-  methods: {
-    run(callback) {
-      if (!this.isUnmount) {
-        window.requestAnimationFrame(() => {
-          this.run(callback);
-        });
-      }
-      callback(this.ctx);
-    },
-  },
 };

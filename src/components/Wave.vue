@@ -1,11 +1,10 @@
 <template>
-  <div>
-    <canvas :style="canvasStyle" width="2560" height="1440" ref="canvas"></canvas>
-  </div>
+  <canvas :style="canvasStyle" width="2560" height="1440" ref="canvas"></canvas>
 </template>
 
 <script>
   /* eslint-disable no-mixed-operators,no-param-reassign */
+
   import canvasMixin from '../mixins/canvasMixin';
 
   export default {
@@ -13,6 +12,7 @@
     data() {
       return {
         phase: 0, // 相位
+        speed: 15,
       };
     },
     mounted() {
@@ -57,7 +57,7 @@
       },
       draw(ctx) {
         ctx.clearRect(0, 0, this.width, this.height);
-        this.phase += 15;
+        this.phase += this.speed;
         this.drawTitle(ctx);
         this.drawAxis(ctx);
         const waves = [
@@ -78,6 +78,14 @@
           },
         ];
         waves.forEach(wave => this.drawWave(ctx, wave));
+      },
+      run(callback) {
+        if (!this.isUnmount) {
+          window.requestAnimationFrame(() => {
+            this.run(callback);
+          });
+        }
+        callback(this.ctx);
       },
     },
   };
