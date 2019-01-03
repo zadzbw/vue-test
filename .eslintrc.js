@@ -40,6 +40,7 @@ module.exports = {
     "no-console": 0,
     "no-unused-vars": 0,
     "object-curly-newline": 0,
+    "max-len": 0,
     "semi": [
       2,
       "always"

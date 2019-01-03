@@ -2,6 +2,9 @@ import Vue from 'vue';
 import Router from 'vue-router';
 import HomePage from '../pages/HomePage';
 
+// sync
+import TestPage from '../pages/TestPage';
+
 // async
 const DividerPage = () => import(/* webpackChunkName: "divider" */'../pages/DividerPage');
 const LoadingPage = () => import(/* webpackChunkName: "loading" */'../pages/LoadingPage');
@@ -68,6 +71,10 @@ const router = new Router({
     {
       path: '/canvas',
       component: CanvasPage,
+    },
+    {
+      path: '/test',
+      component: TestPage,
     },
   ],
 });

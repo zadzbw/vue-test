@@ -23,6 +23,9 @@
       <router-link tag="li" to="/canvas">
         <a>Canvas</a>
       </router-link>
+      <router-link tag="li" to="/test">
+        <a>Test</a>
+      </router-link>
     </nav>
     <div class="main">
       <router-view class="views"/>
