@@ -6,15 +6,25 @@
       <gradient-border-button>test</gradient-border-button>
       <gradient-border-button/>
     </div>
+    <div>
+      <div id="div1" style="height: 64px;width: 64px;background-color: #00ff00;">123</div>
+      <button @click="handleClick">click</button>
+    </div>
   </div>
 </template>
 
 <script>
+  import { TweenMax } from 'gsap/TweenMax';
   import GradientBorderButton from '../components/GradientBorderButton';
 
   export default {
     components: {
       GradientBorderButton,
+    },
+    methods: {
+      handleClick() {
+        TweenMax.to(document.querySelector('#div1'), 2, { x: '+=200', rotation: '+=180', backgroundColor: '#ff00ff' });
+      },
     },
   };
 </script>
