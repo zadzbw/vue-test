@@ -1,5 +1,5 @@
 <template>
-  <div style="text-align: left;">
+  <div :class="$style.page">
     <h3>日常</h3>
     <div>
       <p>渐变border</p>
@@ -30,4 +30,11 @@
 </script>
 
 <style lang="scss" module>
+  .page {
+    text-align: left;
+
+    > div {
+      margin-bottom: 16px;
+    }
+  }
 </style>
