@@ -100,6 +100,11 @@
           });
         }
       },
+      waveName(newValue, oldValue) {
+        if (newValue !== oldValue) {
+          this.draw(this.ctx);
+        }
+      },
     },
     computed: {
       needAnimation() {
