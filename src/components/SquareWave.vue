@@ -13,7 +13,7 @@
       </select>
     </p>
     <p>
-      谐波数量: {{num}}<input type="range" min="1" max="100" v-model.number="num">
+      谐波数量: {{num}}<input type="range" min="1" max="200" v-model.number="num">
     </p>
     <p>
       波形速度: {{speed}}<input type="range" step="0.5" min="0" max="8" v-model.number="speed">
@@ -82,7 +82,6 @@
         phase: 0, // 相位
         speed: 3,
         num: 5, // 叠加波的个数
-        max: 50, // 开启动画时，波的最大个数
         waveMap,
         waveName: 'square',
       };
@@ -93,13 +92,6 @@
       });
     },
     watch: {
-      num(newValue, oldValue) {
-        if (newValue > this.max || (newValue <= this.max && oldValue > this.max)) {
-          this.run((_ctx) => {
-            this.draw(_ctx);
-          });
-        }
-      },
       waveName(newValue, oldValue) {
         if (newValue !== oldValue) {
           this.draw(this.ctx);
@@ -107,9 +99,6 @@
       },
     },
     computed: {
-      needAnimation() {
-        return this.num <= this.max;
-      },
       wave() {
         return this.waveMap[this.waveName];
       },
@@ -160,15 +149,13 @@
       },
       draw(ctx) {
         ctx.clearRect(0, 0, this.width, this.height);
-        if (this.needAnimation) {
-          this.phase += this.speed;
-        }
+        this.phase += this.speed;
         this.drawTitle(ctx);
         this.drawAxis(ctx);
         this.drawWave(ctx);
       },
       run(callback) {
-        if (!this.isUnmount && this.needAnimation) {
+        if (!this.isUnmount) {
           window.requestAnimationFrame(() => {
             this.run(callback);
           });
